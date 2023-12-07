@@ -1,40 +1,22 @@
-#!/bin/bash
+sudo apt update && sudo apt upgrade
+sudo apt install wget build-essential subversion
+cd /usr/src/
+sudo wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz
+sudo tar zxf asterisk-18-current.tar.gz
+cd asterisk-18.*/
+sudo contrib/scripts/get_mp3_source.sh
+sudo contrib/scripts/install_prereq install
+sudo ./configure
 
-# Asterisk Installation Script
 
-# Update package lists
-sudo apt update
-
-# Install dependencies
-sudo apt install -y build-essential libssl-dev libncurses5-dev libnewt-dev libxml2-dev libsqlite3-dev libjansson-dev libuuid1 uuid-dev
-
-# Download Asterisk source code (adjust the version as needed)
-ASTERISK_VERSION="18.20.0"
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz
-tar -zxvf asterisk-${ASTERISK_VERSION}.tar.gz
-cd asterisk-${ASTERISK_VERSION}
-
-# Configure Asterisk
-./configure
-
-# Compile and install Asterisk
-make
+sudo make menuselect
+sudo make -j2
 sudo make install
+sudo make samples
 sudo make config
 sudo ldconfig
 
-# Install additional sample configuration files
-sudo make samples
-
-# Start Asterisk service
 sudo systemctl start asterisk
+sudo asterisk -vvvr
 
-# Enable Asterisk to start on boot
-sudo systemctl enable asterisk
-
-# Display installation completion message
-echo "Asterisk ${ASTERISK_VERSION} has been successfully installed."
-
-# Clean up
-cd ..
-rm -rf asterisk-${ASTERISK_VERSION} asterisk-${ASTERISK_VERSION}.tar.gz
+sudo ufw allow 5060/udp
