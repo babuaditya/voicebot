@@ -9,7 +9,7 @@ sudo apt update
 sudo apt install -y build-essential libssl-dev libncurses5-dev libnewt-dev libxml2-dev libsqlite3-dev libjansson-dev libuuid1 uuid-dev
 
 # Download Asterisk source code (adjust the version as needed)
-ASTERISK_VERSION="16.20.0"
+ASTERISK_VERSION="18.20.0"
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz
 tar -zxvf asterisk-${ASTERISK_VERSION}.tar.gz
 cd asterisk-${ASTERISK_VERSION}
