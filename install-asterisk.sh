@@ -1,7 +1,5 @@
 sudo apt update && sudo apt upgrade
 sudo apt install wget build-essential subversion
-sudo apt-get install -y mpg123 liblwp-protocol-https-perl sox libwww-perl
-sudo apt-get install -y libjson-perl libio-socket-ssl-perl flac
 cd /usr/src/
 sudo wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz
 sudo tar zxf asterisk-18-current.tar.gz
