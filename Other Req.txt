@@ -1,0 +1,8 @@
+sudo chmod 777 install-asterisk.sh
+./install-asterisk.sh
+
+#requirements of googletts.agi
+sudo apt-get install -y mpg123 liblwp-protocol-https-perl sox
+#requirements of speech-recog.agi
+sudo apt-get install -y libjson-perl libio-socket-ssl-perl flac
+sudo chmod 777 googletts.agi speech-recog.agi
